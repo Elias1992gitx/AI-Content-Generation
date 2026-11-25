@@ -1,0 +1,148 @@
+{
+  "title": "The Road to Dessie",
+  "version": "1.0.0",
+  "target_duration_sec": 75,
+  "language": "am",
+  "style_reference": {
+    "visual_style": "Cinematic 35mm film photography, warm golden hour lighting, fine organic grain, soft volumetric haze, centered framing",
+    "character_description": "An elderly Ethiopian grandmother with gentle weathered smile, traditional white cotton habesha kemis with delicate green and gold border embroidery, gray hair neatly wrapped in a light scarf",
+    "color_palette": "Ochre, warm terracotta, emerald green, golden sunlight, dusty rose",
+    "seed": 420815
+  },
+  "music_cues": {
+    "genre": "Ethio-ambient acoustic ballad",
+    "mood": "Nostalgic, gentle, reflective, moving",
+    "instruments": ["washint flute", "acoustic guitar", "krar", "soft warm ambient strings"],
+    "tempo_bpm": 72,
+    "caption": "Warm gentle nostalgic acoustic guitar with traditional Ethiopian washint flute and soft ambient strings, slow unhurried tempo, cinematic emotional film score",
+    "ducking": {
+      "threshold": 0.02,
+      "ratio": 6.0,
+      "attack_ms": 300,
+      "release_ms": 1500
+    }
+  },
+  "shots": [
+    {
+      "id": "shot_01",
+      "shot_number": 1,
+      "duration_sec": 6.5,
+      "shot_type": "extreme_wide",
+      "visual_prompt": "Cinematic landscape of the rolling hills outside Dessie, Ethiopia at early dawn. Dusty mountain road winding through acacia trees and terraced green farmland. Soft morning mist and golden sunrise light. 35mm film grain, centered composition.",
+      "motion_prompt": "Camera pans slowly from left to right across the mountain horizon, morning fog rolls gently across the valley, steady fixed tripod feeling.",
+      "narration": {
+        "text": "አያቴ ሁልጊዜ ወደ ደሴ ገበያ ስትጓዝ፣ ጎህ ሳይቀድ ነበር የምትነሳው።",
+        "voice_style": "calm, warm, nostalgic, unhurried",
+        "subtitles_en": "Whenever my grandmother walked to the Dessie market, she rose before dawn."
+      },
+      "seed": 1001,
+      "reason": "Establishes place, time, and scale of her journey."
+    },
+    {
+      "id": "shot_02",
+      "shot_number": 2,
+      "duration_sec": 7.0,
+      "shot_type": "medium",
+      "visual_prompt": "An elderly Ethiopian grandmother in traditional white cotton habesha kemis carrying a woven market basket under her arm, stepping onto a red dirt footpath outside a stone cottage. Morning golden sunlight backlighting her silhouette. Centered framing.",
+      "motion_prompt": "Camera pushes in gently as she steps forward along the dirt path, breeze lightly moves the edge of her scarf, subtle natural walking motion.",
+      "narration": {
+        "text": "እግሮቿ መንገዱን በቃላቸው ያውቁታል። እያንዳንዱን ድንጋይ፣ እያንዳንዱን ተራራ።",
+        "voice_style": "warm, respectful, reflective",
+        "subtitles_en": "Her feet knew the path by heart. Every stone, every hill."
+      },
+      "seed": 1002,
+      "reason": "Introduces the protagonist and her intimate connection with the land."
+    },
+    {
+      "id": "shot_03",
+      "shot_number": 3,
+      "duration_sec": 6.0,
+      "shot_type": "close_up",
+      "visual_prompt": "Close-up of worn leather sandals walking rhythmically across dry red earth and scattered pebbles. Morning dust rising gently in golden sunlight. Centered framing, cinematic depth of field.",
+      "motion_prompt": "Low angle tracking shot moving smoothly beside the walking feet, steady rhythmic pace, dust particles glowing in sunbeams.",
+      "narration": {
+        "text": "ሀያ ኪሎ ሜትር በእግር መጓዝ ለእሷ ሸክም አልነበረም፤ የህይወት ትምህርት ቤት ነበር።",
+        "voice_style": "thoughtful, gentle, steady",
+        "subtitles_en": "Walking twenty kilometers was never a burden to her; it was a school of life."
+      },
+      "seed": 1003,
+      "reason": "Emphasizes resilience, stamina, and physical dedication."
+    },
+    {
+      "id": "shot_04",
+      "shot_number": 4,
+      "duration_sec": 7.0,
+      "shot_type": "wide",
+      "visual_prompt": "A solitary traveler resting under the shade of a large ancient sycamore tree beside a mountain ridge overlooking the Wollo plains. Warm golden morning light, cinematic atmosphere, 35mm film.",
+      "motion_prompt": "Slow aerial zoom out revealing the vastness of the green valleys, gentle wind blowing through the sycamore branches.",
+      "narration": {
+        "text": "ጥላ ሲያገኝ የሚያርፍ፣ መንገዱን የሚያስብ ሰው አይደክመውም ትለን ነበር።",
+        "voice_style": "nostalgic, gentle smile in the voice",
+        "subtitles_en": "\"Whoever rests in the shade and reflects on the journey will never grow weary,\" she used to tell us."
+      },
+      "seed": 1004,
+      "reason": "Provides pause and introduces her maternal proverb/wisdom."
+    },
+    {
+      "id": "shot_05",
+      "shot_number": 5,
+      "duration_sec": 6.5,
+      "shot_type": "medium",
+      "visual_prompt": "Vibrant outdoor market in Dessie, colorful spices in woven baskets, grains, fabrics, and merchants talking under canvas awnings. Sunbeams piercing through morning dust. Centered framing.",
+      "motion_prompt": "Camera drifts slowly through the bustling market aisle, gentle motion of merchants greeting each other, authentic market ambiance.",
+      "narration": {
+        "text": "ደሴ ስትደርስ ገበያው በሳቅ እና በሰላምታ ሞልቷል።",
+        "voice_style": "bright, lively yet warm",
+        "subtitles_en": "When she reached Dessie, the market was alive with laughter and greetings."
+      },
+      "seed": 1005,
+      "reason": "Brings the journey to its destination: community, commerce, and human connection."
+    },
+    {
+      "id": "shot_06",
+      "shot_number": 6,
+      "duration_sec": 7.0,
+      "shot_type": "close_up",
+      "visual_prompt": "Close-up portrait of the elderly Ethiopian grandmother smiling warmly as she exchanges fresh grains with another merchant. Weathered kind eyes, deep expression lines of joy and dignity. Warm golden lighting.",
+      "motion_prompt": "Slow push-in towards her face, she nods gently with a knowing smile, eyes sparkling in the warm light.",
+      "narration": {
+        "text": "የምትሸጠው እህል ብቻ አልነበረም፤ ፍቅርን እና በረከትን ነበር።",
+        "voice_style": "deeply affectionate, sincere",
+        "subtitles_en": "She traded more than grain; she shared love and blessing."
+      },
+      "seed": 1006,
+      "reason": "Emotional peak showing her spirit and generosity."
+    },
+    {
+      "id": "shot_07",
+      "shot_number": 7,
+      "duration_sec": 6.5,
+      "shot_type": "wide",
+      "visual_prompt": "The grandmother walking back along the mountain ridge at sunset. Long golden-purple shadows stretching across the path. Soft twilight sky over Ethiopian highlands.",
+      "motion_prompt": "Slow tracking shot from behind as she walks into the warm sunset, silhouetted against the amber horizon.",
+      "narration": {
+        "text": "ምሽት ላይ ወደ ቤቷ ስትመለስ፣ ኪሷ ባዶ ቢሆንም ልቧ ግን ሙሉ ነበር።",
+        "voice_style": "calm, reflective, peaceful",
+        "subtitles_en": "Returning home at dusk, even with empty pockets, her heart was full."
+      },
+      "seed": 1007,
+      "reason": "Closing movement of the journey, signifying fulfillment."
+    },
+    {
+      "id": "shot_08",
+      "shot_number": 8,
+      "duration_sec": 8.0,
+      "shot_type": "medium",
+      "visual_prompt": "Inside a cozy traditional stone home, an earthen coffee pot (jebena) steaming gently over glowing charcoal embers. The grandmother's hands pouring coffee into small ceramic cups. Centered framing, warm firelight.",
+      "motion_prompt": "Fixed camera with soft steam rising from the jebena, embers flickering softly in the dim cozy room.",
+      "narration": {
+        "text": "ያ የተጓዘችው መንገድ ዛሬም በልባችን ውስጥ ህያው ነው።",
+        "voice_style": "solemn, resonant, loving conclusion",
+        "subtitles_en": "The path she walked remains alive in our hearts today."
+      },
+      "seed": 1008,
+      "reason": "Resolution and heritage anchor: the tradition continues at home."
+    }
+  ]
+}
+

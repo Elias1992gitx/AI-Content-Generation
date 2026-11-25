@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "StoryboardSchema",
+  "description": "Contract defining the sequence of shots, narration, visuals, motion, and music cues for the short film.",
+  "type": "object",
+  "required": [
+    "title",
+    "version",
+    "target_duration_sec",
+    "language",
+    "style_reference",
+    "music_cues",
+    "shots"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "version": { "type": "string" },
+    "target_duration_sec": { "type": "number", "minimum": 60, "maximum": 90 },
+    "language": { "type": "string" },
+    "style_reference": {
+      "type": "object",
+      "required": ["visual_style", "character_description", "color_palette"],
+      "properties": {
+        "visual_style": { "type": "string" },
+        "character_description": { "type": "string" },
+        "color_palette": { "type": "string" },
+        "seed": { "type": "integer" }
+      }
+    },
+    "music_cues": {
+      "type": "object",
+      "required": ["genre", "mood", "instruments", "tempo_bpm", "ducking"],
+      "properties": {
+        "genre": { "type": "string" },
+        "mood": { "type": "string" },
+        "instruments": { "type": "array", "items": { "type": "string" } },
+        "tempo_bpm": { "type": "integer" },
+        "caption": { "type": "string" },
+        "ducking": {
+          "type": "object",
+          "properties": {
+            "threshold": { "type": "number", "default": 0.02 },
+            "ratio": { "type": "number", "default": 6.0 },
+            "attack_ms": { "type": "integer", "default": 300 },
+            "release_ms": { "type": "integer", "default": 1500 }
+          }
+        }
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "shot_number",
+          "duration_sec",
+          "shot_type",
+          "visual_prompt",
+          "motion_prompt",
+          "narration",
+          "seed"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "shot_number": { "type": "integer" },
+          "duration_sec": { "type": "number", "minimum": 3.0, "maximum": 12.0 },
+          "shot_type": {
+            "type": "string",
+            "enum": ["extreme_wide", "wide", "medium", "close_up", "extreme_close_up"]
+          },
+          "visual_prompt": { "type": "string" },
+          "motion_prompt": { "type": "string" },
+          "narration": {
+            "type": "object",
+            "required": ["text", "voice_style", "subtitles_en"],
+            "properties": {
+              "text": { "type": "string" },
+              "voice_style": { "type": "string" },
+              "subtitles_en": { "type": "string" }
+            }
+          },
+          "seed": { "type": "integer" },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+
