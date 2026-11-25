@@ -113,3 +113,4 @@ Rather than settling for minimal baseline scripts, several high-impact engineeri
 | **Cost & Latency Accounting** | [`COSTS.md`](COSTS.md) |
 | **Ethics & Consent Record** | [`ETHICS.md`](ETHICS.md) |
 | **Final Video Masters** | [`outputs/final/short_vertical_9_16.mp4`](outputs/final/short_vertical_9_16.mp4), [`short_horizontal_16_9.mp4`](outputs/final/short_horizontal_16_9.mp4) |
+
