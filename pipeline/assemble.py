@@ -175,16 +175,16 @@ def process_master_audio(total_duration: float) -> Path:
     print("🎚️ [AUDIO MASTERING] Sidechain Ducking & EBU R128 (-14 LUFS) Normalization...")
 
     # Filter graph:
-    # 1. Voice padded/boosted
-    # 2. Score sidechain-compressed under voice
-    # 3. Mix with amix
-    # 4. loudnorm pass
+    # 1. Voice denoised via FFT filter (afftdn) and gentle bandpass (75Hz-9500Hz) to remove hiss/rumble
+    # 2. Score low-passed at 1800Hz with subtle volume (0.10) to eliminate high-frequency artifacts
+    # 3. Smooth sidechain compression ducking under narration
+    # 4. Mix and EBU R128 loudness normalization
     filter_complex = (
-        "[0:a]volume=1.05[vox];"
-        "[1:a]volume=0.35,afade=t=in:ss=0:d=1.5,afade=t=out:st=80:d=4.0[music_pre];"
-        "[music_pre][vox]sidechaincompress=threshold=0.02:ratio=6:attack=300:release=1500[ducked_music];"
+        "[0:a]afftdn=nf=-25,highpass=f=75,lowpass=f=9500,volume=1.05[vox];"
+        "[1:a]volume=0.10,lowpass=f=1800,highpass=f=80,afade=t=in:ss=0:d=2.0,afade=t=out:st=80:d=4.0[music_pre];"
+        "[music_pre][vox]sidechaincompress=threshold=0.015:ratio=8:attack=250:release=1200[ducked_music];"
         "[vox][ducked_music]amix=inputs=2:duration=first:dropout_transition=2[mix];"
-        "[mix]loudnorm=I=-14:TP=-1.0:LRA=11[master]"
+        "[mix]loudnorm=I=-16:TP=-1.5:LRA=9[master]"
     )
 
     cmd = [
