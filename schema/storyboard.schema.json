@@ -69,7 +69,13 @@
           "duration_sec": { "type": "number", "minimum": 3.0, "maximum": 12.0 },
           "shot_type": {
             "type": "string",
-            "enum": ["extreme_wide", "wide", "medium", "close_up", "extreme_close_up"]
+            "enum": [
+              "extreme_wide",
+              "wide",
+              "medium",
+              "close_up",
+              "extreme_close_up"
+            ]
           },
           "visual_prompt": { "type": "string" },
           "motion_prompt": { "type": "string" },
@@ -89,4 +95,3 @@
     }
   }
 }
-

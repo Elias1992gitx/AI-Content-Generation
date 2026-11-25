@@ -1,20 +1,25 @@
 {
-  "title": "The Road to Dessie",
+  "title": "The Boy Who Grew with the Land",
   "version": "1.0.0",
-  "target_duration_sec": 75,
+  "target_duration_sec": 70,
   "language": "am",
   "style_reference": {
-    "visual_style": "Cinematic 35mm film photography, warm golden hour lighting, fine organic grain, soft volumetric haze, centered framing",
-    "character_description": "An elderly Ethiopian grandmother with gentle weathered smile, traditional white cotton habesha kemis with delicate green and gold border embroidery, gray hair neatly wrapped in a light scarf",
-    "color_palette": "Ochre, warm terracotta, emerald green, golden sunlight, dusty rose",
-    "seed": 420815
+    "visual_style": "Cinematic 35mm film still, warm golden morning light, fine organic grain, soft highland mist, centered composition, authentic Ethiopian rural heritage",
+    "character_description": "A 10-year-old Ethiopian highland boy with gentle determined eyes, wearing a simple traditional earth-toned cotton vest and shorts, barefoot, natural skin texture",
+    "color_palette": "Highland ochre, terracota red soil, lush emerald green pastures, amber sunrise, misty blue distant peaks",
+    "seed": 789456
   },
   "music_cues": {
-    "genre": "Ethio-ambient acoustic ballad",
-    "mood": "Nostalgic, gentle, reflective, moving",
-    "instruments": ["washint flute", "acoustic guitar", "krar", "soft warm ambient strings"],
-    "tempo_bpm": 72,
-    "caption": "Warm gentle nostalgic acoustic guitar with traditional Ethiopian washint flute and soft ambient strings, slow unhurried tempo, cinematic emotional film score",
+    "genre": "Ethio-acoustic highland ballad",
+    "mood": "Nostalgic, warm, gentle, reverent, resilient",
+    "instruments": [
+      "traditional washint flute",
+      "krar",
+      "acoustic guitar",
+      "soft ambient strings"
+    ],
+    "tempo_bpm": 68,
+    "caption": "Deeply moving Ethiopian acoustic folk score, gentle traditional washint flute, warm acoustic guitar, reflective nostalgic strings, unhurried and cinematic",
     "ducking": {
       "threshold": 0.02,
       "ratio": 6.0,
@@ -26,123 +31,122 @@
     {
       "id": "shot_01",
       "shot_number": 1,
-      "duration_sec": 6.5,
+      "duration_sec": 8.0,
       "shot_type": "extreme_wide",
-      "visual_prompt": "Cinematic landscape of the rolling hills outside Dessie, Ethiopia at early dawn. Dusty mountain road winding through acacia trees and terraced green farmland. Soft morning mist and golden sunrise light. 35mm film grain, centered composition.",
-      "motion_prompt": "Camera pans slowly from left to right across the mountain horizon, morning fog rolls gently across the valley, steady fixed tripod feeling.",
+      "visual_prompt": "Cinematic landscape of the Ethiopian highlands at dawn. Rolling green terraced hills, distant blue mountains, morning mist drifting across eucalyptus and acacia trees. Soft golden sunrise light, 35mm film grain, centered framing.",
+      "motion_prompt": "Camera pans slowly from left to right across the vast misty valley, morning fog rises gently, quiet still morning feeling.",
       "narration": {
-        "text": "አያቴ ሁልጊዜ ወደ ደሴ ገበያ ስትጓዝ፣ ጎህ ሳይቀድ ነበር የምትነሳው።",
+        "text": "ከከተሞች ጩኸት እና ከዘመናዊው አለም ውጣ ውረድ በፊት፣ በኢትዮጵያ ገጠራማ ምድር ያደገ አንድ ትንሽ ልጅ ነበር።",
         "voice_style": "calm, warm, nostalgic, unhurried",
-        "subtitles_en": "Whenever my grandmother walked to the Dessie market, she rose before dawn."
+        "subtitles_en": "Long before the noise of busy cities, a young boy was growing up in the Ethiopian countryside."
       },
-      "seed": 1001,
-      "reason": "Establishes place, time, and scale of her journey."
+      "seed": 2001,
+      "reason": "Establishes place, tranquility, and scale of the Ethiopian countryside before modern life."
     },
     {
       "id": "shot_02",
       "shot_number": 2,
-      "duration_sec": 7.0,
+      "duration_sec": 7.5,
       "shot_type": "medium",
-      "visual_prompt": "An elderly Ethiopian grandmother in traditional white cotton habesha kemis carrying a woven market basket under her arm, stepping onto a red dirt footpath outside a stone cottage. Morning golden sunlight backlighting her silhouette. Centered framing.",
-      "motion_prompt": "Camera pushes in gently as she steps forward along the dirt path, breeze lightly moves the edge of her scarf, subtle natural walking motion.",
+      "visual_prompt": "A young 10-year-old Ethiopian boy stepping barefoot onto dew-covered green grass outside a traditional stone thatched cottage. Cool morning mist, amber dawn sunlight hitting his face. Centered framing.",
+      "motion_prompt": "Camera pushes in gently as he steps onto the damp grass, looking out towards the rising sun with quiet calm.",
       "narration": {
-        "text": "እግሮቿ መንገዱን በቃላቸው ያውቁታል። እያንዳንዱን ድንጋይ፣ እያንዳንዱን ተራራ።",
-        "voice_style": "warm, respectful, reflective",
-        "subtitles_en": "Her feet knew the path by heart. Every stone, every hill."
+        "text": "የልጅነት አለሙ በውድ መጫወቻዎች የተከበበ አልነበረም፤ በመስኩ አረንጓዴ፣ በተራራው ንጹህ አየር እና በገጠር ህይወት ሰላማዊ ዜማ እንጂ።",
+        "voice_style": "gentle, poetic, reflective",
+        "subtitles_en": "His childhood was not surrounded by toys, but by green fields, morning air, and village peace."
       },
-      "seed": 1002,
-      "reason": "Introduces the protagonist and her intimate connection with the land."
+      "seed": 2002,
+      "reason": "Introduces the young protagonist and his intimate connection with nature."
     },
     {
       "id": "shot_03",
       "shot_number": 3,
-      "duration_sec": 6.0,
-      "shot_type": "close_up",
-      "visual_prompt": "Close-up of worn leather sandals walking rhythmically across dry red earth and scattered pebbles. Morning dust rising gently in golden sunlight. Centered framing, cinematic depth of field.",
-      "motion_prompt": "Low angle tracking shot moving smoothly beside the walking feet, steady rhythmic pace, dust particles glowing in sunbeams.",
+      "duration_sec": 8.5,
+      "shot_type": "wide",
+      "visual_prompt": "The young Ethiopian shepherd boy holding a wooden walking stick, guiding a flock of sheep and cattle across open highland pastures. Soft morning sunbeams piercing through scattered clouds, lush rolling hills.",
+      "motion_prompt": "Slow tracking shot following the cattle grazing across the green pasture, boy walking steadily beside them, wind rustling the grass.",
       "narration": {
-        "text": "ሀያ ኪሎ ሜትር በእግር መጓዝ ለእሷ ሸክም አልነበረም፤ የህይወት ትምህርት ቤት ነበር።",
-        "voice_style": "thoughtful, gentle, steady",
-        "subtitles_en": "Walking twenty kilometers was never a burden to her; it was a school of life."
+        "text": "ፀሐይ ከተራራው ጀርባ ስትወጣ፣ ከብቶችን እየነዳ ወደ ሜዳው ያመራል። ረዣዥም ቀናት አድካሚ ቢሆኑም፣ ገጠሩ የራሱ የሆነ ውበት ነበረው።",
+        "voice_style": "warm, steady, observant",
+        "subtitles_en": "As the sun rose behind the hills, he guided the cattle across the pastures. The long days were tiring, but the countryside had its own beauty."
       },
-      "seed": 1003,
-      "reason": "Emphasizes resilience, stamina, and physical dedication."
+      "seed": 2003,
+      "reason": "Depicts childhood responsibility, cattle herding, and daily patience."
     },
     {
       "id": "shot_04",
       "shot_number": 4,
-      "duration_sec": 7.0,
-      "shot_type": "wide",
-      "visual_prompt": "A solitary traveler resting under the shade of a large ancient sycamore tree beside a mountain ridge overlooking the Wollo plains. Warm golden morning light, cinematic atmosphere, 35mm film.",
-      "motion_prompt": "Slow aerial zoom out revealing the vastness of the green valleys, gentle wind blowing through the sycamore branches.",
+      "duration_sec": 8.5,
+      "shot_type": "close_up",
+      "visual_prompt": "Close-up of the young boy's sun-browned hands tenderly nurturing delicate green seedlings in freshly tilled rich red earth. Sunlight glistening on morning dew and fertile dark soil, organic farming texture, cinematic depth of field.",
+      "motion_prompt": "Slow tilt up from his hands carefully patting the soil around the young sprout to his focused, respectful expression.",
       "narration": {
-        "text": "ጥላ ሲያገኝ የሚያርፍ፣ መንገዱን የሚያስብ ሰው አይደክመውም ትለን ነበር።",
-        "voice_style": "nostalgic, gentle smile in the voice",
-        "subtitles_en": "\"Whoever rests in the shade and reflects on the journey will never grow weary,\" she used to tell us."
+        "text": "አፈሩን አርሶ ዘርን ማብቀል፣ ለእሱ የህይወት ትምህርት ቤት ነበር። እያንዳንዱ የተዘራ ዘር ተስፋን፣ እያንዳንዱ የሰብል ወቅት ደግሞ ትዕግስትን እና ብርታትን አስተማረው።",
+        "voice_style": "natural, warm, unhurried human storyteller, speaking with gentle heartfelt emotion",
+        "subtitles_en": "Cultivating seeds and tilling the soil became his school of life. Every seed sown carried hope, and every harvest cycle taught patience and strength."
       },
-      "seed": 1004,
-      "reason": "Provides pause and introduces her maternal proverb/wisdom."
+      "seed": 2004,
+      "reason": "Core agricultural focus: tilling the soil, cultivating seeds, and learning life lessons through the growth of crops."
     },
     {
       "id": "shot_05",
       "shot_number": 5,
-      "duration_sec": 6.5,
-      "shot_type": "medium",
-      "visual_prompt": "Vibrant outdoor market in Dessie, colorful spices in woven baskets, grains, fabrics, and merchants talking under canvas awnings. Sunbeams piercing through morning dust. Centered framing.",
-      "motion_prompt": "Camera drifts slowly through the bustling market aisle, gentle motion of merchants greeting each other, authentic market ambiance.",
+      "duration_sec": 9.0,
+      "shot_type": "wide",
+      "visual_prompt": "Traditional Ethiopian highland harvest scene. Neighbors and families working side by side in the golden teff field, traditional straw hats, women carrying clay water jugs, communal spirit of Debo. Warm golden hour light.",
+      "motion_prompt": "Slow panoramic pan across the communal harvest field, farmers cutting and tying grain together in shared harmony.",
       "narration": {
-        "text": "ደሴ ስትደርስ ገበያው በሳቅ እና በሰላምታ ሞልቷል።",
-        "voice_style": "bright, lively yet warm",
-        "subtitles_en": "When she reached Dessie, the market was alive with laughter and greetings."
+        "text": "በዚያን ጊዜ ህይወት በህብረት የተገነባ ነበር። ቤተሰብ አብሮ ይሰራል፣ ጎረቤት ለጎረቤት ይደጋገፋል፣ ማህበረሰቡም ያለውን ይካፈላል።",
+        "voice_style": "warm, proud, communal warmth",
+        "subtitles_en": "In those days, life was built on togetherness. Families worked side by side, neighbors supported one another, sharing whatever they had."
       },
-      "seed": 1005,
-      "reason": "Brings the journey to its destination: community, commerce, and human connection."
+      "seed": 2005,
+      "reason": "Celebrates Ethiopian communal values, solidarity, and Debo labor culture."
     },
     {
       "id": "shot_06",
       "shot_number": 6,
-      "duration_sec": 7.0,
+      "duration_sec": 8.5,
       "shot_type": "close_up",
-      "visual_prompt": "Close-up portrait of the elderly Ethiopian grandmother smiling warmly as she exchanges fresh grains with another merchant. Weathered kind eyes, deep expression lines of joy and dignity. Warm golden lighting.",
-      "motion_prompt": "Slow push-in towards her face, she nods gently with a knowing smile, eyes sparkling in the warm light.",
+      "visual_prompt": "Close-up portrait of the 10-year-old Ethiopian boy resting for a moment under a wild olive tree. Sweat glistening softly on his forehead, a genuine peaceful smile, kind eyes reflecting the golden sky. Centered framing.",
+      "motion_prompt": "Slow push-in towards his eyes, a gentle breeze moves a lock of hair, subtle breathing and quiet content smile.",
       "narration": {
-        "text": "የምትሸጠው እህል ብቻ አልነበረም፤ ፍቅርን እና በረከትን ነበር።",
-        "voice_style": "deeply affectionate, sincere",
-        "subtitles_en": "She traded more than grain; she shared love and blessing."
+        "text": "ኃላፊነትን ከእንስሳቱ፣ ጽናትን ደግሞ ከመሬቱ ተማረ። ምንም አይነት የክፍል ትምህርት ሊያስተምረው የማይችለውን ታላቅ ጥበብ።",
+        "voice_style": "deeply affectionate, profound",
+        "subtitles_en": "He learned responsibility from animals, and determination from the fields—lessons no classroom could ever teach."
       },
-      "seed": 1006,
-      "reason": "Emotional peak showing her spirit and generosity."
+      "seed": 2006,
+      "reason": "Emotional peak showing his inner character and dignity being formed."
     },
     {
       "id": "shot_07",
       "shot_number": 7,
-      "duration_sec": 6.5,
-      "shot_type": "wide",
-      "visual_prompt": "The grandmother walking back along the mountain ridge at sunset. Long golden-purple shadows stretching across the path. Soft twilight sky over Ethiopian highlands.",
-      "motion_prompt": "Slow tracking shot from behind as she walks into the warm sunset, silhouetted against the amber horizon.",
+      "duration_sec": 9.5,
+      "shot_type": "medium",
+      "visual_prompt": "The young boy standing at the crest of a green highland ridge at golden sunset, looking out towards the distant horizon where mountains meet the twilight sky. Silhouetted against warm amber and violet light.",
+      "motion_prompt": "Slow camera pull-back from behind the boy as the sunset deepens, looking into the expansive future.",
       "narration": {
-        "text": "ምሽት ላይ ወደ ቤቷ ስትመለስ፣ ኪሷ ባዶ ቢሆንም ልቧ ግን ሙሉ ነበር።",
-        "voice_style": "calm, reflective, peaceful",
-        "subtitles_en": "Returning home at dusk, even with empty pockets, her heart was full."
+        "text": "ዓመታት አለፉ። በመስኩ በባዶ እግሩ ይጓዝ የነበረው ያ ትንሽ ልጅ ወደ ትልቅ ሰውነት ተቀየረ። ነገር ግን ያ ያሳለፈው ህይወት ዛሬም በውስጡ ህያው ነው።",
+        "voice_style": "solemn, respectful, bridging past to present",
+        "subtitles_en": "Years passed. The little barefoot boy who roamed the fields became a man, but the lessons of his childhood remain alive in him today."
       },
-      "seed": 1007,
-      "reason": "Closing movement of the journey, signifying fulfillment."
+      "seed": 2007,
+      "reason": "The bridge from past childhood to present manhood and character."
     },
     {
       "id": "shot_08",
       "shot_number": 8,
-      "duration_sec": 8.0,
-      "shot_type": "medium",
-      "visual_prompt": "Inside a cozy traditional stone home, an earthen coffee pot (jebena) steaming gently over glowing charcoal embers. The grandmother's hands pouring coffee into small ceramic cups. Centered framing, warm firelight.",
-      "motion_prompt": "Fixed camera with soft steam rising from the jebena, embers flickering softly in the dim cozy room.",
+      "duration_sec": 10.5,
+      "shot_type": "wide",
+      "visual_prompt": "A solitary majestic ancient sycamore tree on the Ethiopian plateau under twilight stars and glowing embers of sunset. Red earth pathway with faint footsteps leading forward. Cinematic, timeless, peaceful.",
+      "motion_prompt": "Slow aerial rise revealing the enduring beauty of the land beneath the vast Ethiopian night sky.",
       "narration": {
-        "text": "ያ የተጓዘችው መንገድ ዛሬም በልባችን ውስጥ ህያው ነው።",
-        "voice_style": "solemn, resonant, loving conclusion",
-        "subtitles_en": "The path she walked remains alive in our hearts today."
+        "text": "አንዳንዶች ሀብትን ይወርሳሉ፣ አንዳንዶች እውቀትን፤ አባቴ ግን የመሬቱን ብርታት ወረሰ። እኔም በኩራት የማስታውሰው ትሩፋት ይኸው ነው።",
+        "voice_style": "resonant, loving, proud conclusion",
+        "subtitles_en": "Some people inherit wealth, some inherit knowledge, but my father inherited the strength of the land—and that is a legacy I will always be proud of."
       },
-      "seed": 1008,
-      "reason": "Resolution and heritage anchor: the tradition continues at home."
+      "seed": 2008,
+      "reason": "The climax and legacy punchline honoring the father and his enduring strength."
     }
   ]
 }
-

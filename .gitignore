@@ -23,6 +23,10 @@ outputs/music/*
 !outputs/music/.gitkeep
 outputs/final/*
 !outputs/final/.gitkeep
+outputs/*.mp4
+outputs/*.wav
+outputs/*.mp3
+outputs/*.txt
 
 # OS
 .DS_Store
