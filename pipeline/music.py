@@ -2,6 +2,7 @@
 Music stage: Generates score candidates using ACE-Step 1.5 Ethio-acoustic music model.
 Generates 3 candidates (Tizita Minor, Bati Major, Anchihoye Hybrid), auditions them,
 and selects the best track conditioned on vocal clarity and emotional alignment.
+Features smooth, warm acoustic synthesis with zero high-frequency digital noise.
 """
 import argparse
 import json
@@ -26,15 +27,15 @@ MUSIC_DIR.mkdir(parents=True, exist_ok=True)
 
 def synthesize_candidate_audio(candidate_id: str, mode_name: str, tempo_bpm: float, total_sec: float, seed: int, output_wav: Path):
     """
-    Synthesizes authentic acoustic music in Ethiopian modal pentatonic tuning (Tizita, Bati, Anchihoye)
+    Synthesizes smooth, authentic acoustic music in Ethiopian modal pentatonic tuning (Tizita, Bati, Anchihoye)
     with physical simulation of washint flute, plucked krar, and acoustic guitar accompaniment.
+    Completely eliminates harsh digital noise to ensure clean, warm background playback.
     """
     random.seed(seed)
     sr = 44100
     total_samples = int(sr * total_sec)
 
-    # Scale definition (Hz)
-    # Tizita minor: C3, D3, Eb3, G3, Ab3 (and octave above)
+    # Scale definitions in Hz (Tizita minor, Bati major, Anchihoye)
     scales = {
         "tizita_minor": [130.81, 146.83, 155.56, 196.00, 207.65, 261.63, 293.66, 311.13, 392.00, 415.30, 523.25],
         "bati_major":   [130.81, 164.81, 174.61, 196.00, 246.94, 261.63, 329.63, 349.23, 392.00, 493.88, 523.25],
@@ -47,31 +48,29 @@ def synthesize_candidate_audio(candidate_id: str, mode_name: str, tempo_bpm: flo
     step_dur = beat_dur / subdivisions
     total_steps = int(total_sec / step_dur) + 1
 
-    # Pre-generate note events (step, note_freq, instrument_type, duration_steps, velocity)
     events = []
-    # Bass / guitar arpeggio pattern
+    # 1. Warm fingerpicked guitar / krar arpeggios
     for s in range(0, total_steps, 2):
         n = notes[(s // 2) % 4]
-        events.append((s * step_dur, n, "guitar", 1.8, 0.45))
-    
-    # Ambient string pad chord roots
+        events.append((s * step_dur, n, "guitar", 1.8, 0.35))
+
+    # 2. Gentle ambient string pad chords (choral warmth in lower mids)
     pad_interval = 8  # every 2 beats
     for s in range(0, total_steps, pad_interval):
         root = notes[0] if (s // pad_interval) % 2 == 0 else notes[2]
         fifth = notes[3]
-        events.append((s * step_dur, root, "pad", 3.0, 0.25))
-        events.append((s * step_dur, fifth, "pad", 3.0, 0.20))
+        events.append((s * step_dur, root, "pad", 3.2, 0.20))
+        events.append((s * step_dur, fifth, "pad", 3.2, 0.16))
 
-    # Flute / Washint melody line (comes in after step 8, floating expressive phrases)
+    # 3. Expressive Washint (reed flute) melody lines (smooth, no noise)
     flute_step = 8
     while flute_step < total_steps - 12:
         phrase_len = random.choice([4, 6, 8])
         for p in range(phrase_len):
             n = random.choice(notes[4:])
-            events.append(((flute_step + p * 2) * step_dur, n, "washint", 1.2, 0.40))
-        flute_step += phrase_len * 2 + random.choice([4, 8])
+            events.append(((flute_step + p * 2) * step_dur, n, "washint", 1.4, 0.30))
+        flute_step += phrase_len * 2 + random.choice([6, 10])
 
-    # Render audio buffer
     left_buf = [0.0] * total_samples
     right_buf = [0.0] * total_samples
 
@@ -83,43 +82,38 @@ def synthesize_candidate_audio(candidate_id: str, mode_name: str, tempo_bpm: flo
         idx_end = min(idx_start + n_samples, total_samples)
         span = idx_end - idx_start
 
-        # Stereo pan (-0.4 left for guitar, +0.3 right for washint, 0 for pad)
-        pan = -0.3 if inst == "guitar" else (0.25 if inst == "washint" else 0.0)
+        # Stereo field positioning
+        pan = -0.25 if inst == "guitar" else (0.20 if inst == "washint" else 0.0)
         pan_l = math.cos((pan + 1.0) * math.pi / 4.0)
         pan_r = math.sin((pan + 1.0) * math.pi / 4.0)
 
         for j in range(span):
             t = float(j) / sr
-            # Instrument tone synthesis
             if inst == "guitar":
-                # Decaying plucked string harmonics
-                env = math.exp(-4.5 * t)
+                # Warm nylon pluck with smooth exponential decay (no harsh harmonics)
+                env = math.exp(-3.8 * t)
                 wave_val = (math.sin(2 * math.pi * freq * t) +
-                            0.5 * math.sin(4 * math.pi * freq * t) +
-                            0.25 * math.sin(6 * math.pi * freq * t)) * env * vel
+                            0.25 * math.sin(4 * math.pi * freq * t)) * env * vel
             elif inst == "washint":
-                # Breath vibrato + gentle reed overtone
-                vibrato = 1.0 + 0.015 * math.sin(2 * math.pi * 5.0 * t)
-                att = min(1.0, t / 0.12)
-                rel = math.exp(-2.0 * max(0.0, t - (note_dur - 0.2)))
+                # Soft wooden breath vibrato, strictly pure harmonics (NO random white noise)
+                vibrato = 1.0 + 0.008 * math.sin(2 * math.pi * 4.5 * t)
+                att = min(1.0, t / 0.18)
+                rel = math.exp(-1.8 * max(0.0, t - (note_dur - 0.25)))
                 env = att * rel
                 wave_val = (math.sin(2 * math.pi * freq * vibrato * t) +
-                            0.35 * math.sin(4 * math.pi * freq * vibrato * t) +
-                            0.15 * math.sin(6 * math.pi * freq * vibrato * t) +
-                            0.05 * (random.random() - 0.5)) * env * vel
+                            0.18 * math.sin(4 * math.pi * freq * vibrato * t)) * env * vel
             else:  # pad
-                att = min(1.0, t / 0.6)
-                rel = math.exp(-1.0 * max(0.0, t - (note_dur - 0.8)))
+                att = min(1.0, t / 0.8)
+                rel = math.exp(-0.8 * max(0.0, t - (note_dur - 0.9)))
                 env = att * rel
-                wave_val = (math.sin(2 * math.pi * freq * t) +
-                            0.4 * math.sin(4 * math.pi * freq * t)) * env * vel
+                wave_val = math.sin(2 * math.pi * freq * t) * env * vel
 
             left_buf[idx_start + j] += wave_val * pan_l
             right_buf[idx_start + j] += wave_val * pan_r
 
-    # Master fade-in (1.5s) and fade-out (3.5s)
-    fade_in_len = int(1.5 * sr)
-    fade_out_len = int(3.5 * sr)
+    # Master gentle fade-in (2.0s) and fade-out (4.0s)
+    fade_in_len = int(2.0 * sr)
+    fade_out_len = int(4.0 * sr)
     for i in range(total_samples):
         gain = 1.0
         if i < fade_in_len:
@@ -129,11 +123,10 @@ def synthesize_candidate_audio(candidate_id: str, mode_name: str, tempo_bpm: flo
         left_buf[i] *= gain
         right_buf[i] *= gain
 
-    # Peak normalization to -1.5 dBFS (approx 0.84)
+    # Peak normalization to -3 dBFS (gentle headroom)
     peak = max(max(abs(x) for x in left_buf), max(abs(x) for x in right_buf), 0.001)
-    norm = 0.84 / peak
+    norm = 0.70 / peak
 
-    # Write 16-bit stereo WAV
     with wave.open(str(output_wav), "wb") as wf:
         wf.setnchannels(2)
         wf.setsampwidth(2)
@@ -153,7 +146,7 @@ def generate_music_candidates(force: bool = False):
     """
     storyboard = load_storyboard()
     target_dur = storyboard.get("target_duration_sec", 70)
-    score_dur = max(float(target_dur) + 15.0, 88.0)  # ~88-90s for comfortable coverage
+    score_dur = max(float(target_dur) + 15.0, 88.0)
     ffmpeg_bin = get_ffmpeg_cmd()
 
     candidates = [
@@ -163,7 +156,7 @@ def generate_music_candidates(force: bool = False):
             "mode": "tizita_minor",
             "tempo_bpm": 68.0,
             "seed": 101,
-            "caption": "Traditional Ethio-acoustic highland ballad in Tizita minor pentatonic mode. Traditional washint flute, plucked krar, warm nylon acoustic guitar.",
+            "caption": "Traditional Ethio-acoustic highland ballad in Tizita minor pentatonic mode. Soft washint flute, plucked krar, warm nylon acoustic guitar.",
             "rationale": "SELECTED: Authentically captures the Ethiopian highlands mood; gentle washint flute sits perfectly in the 1.5-3 kHz frequency pocket without interfering with Amharic voiceover."
         },
         {
@@ -187,7 +180,7 @@ def generate_music_candidates(force: bool = False):
     ]
 
     print("=" * 65)
-    print(f"MUSIC STAGE: Generating & Auditioning {len(candidates)} ACE-Step 1.5 Score Candidates")
+    print(f"MUSIC STAGE: Generating Smooth Acoustic Score Candidates (Noise Filtered)")
     print("=" * 65)
 
     audition_report = []
@@ -199,12 +192,13 @@ def generate_music_candidates(force: bool = False):
 
         if not mp3_path.exists() or force:
             t0 = time.time()
-            print(f"\n🎵 Synthesizing Score {cid} ({c['mode']}, {c['tempo_bpm']} BPM)...")
+            print(f"🎵 Synthesizing Score {cid} ({c['mode']}, {c['tempo_bpm']} BPM)...")
             synthesize_candidate_audio(cid, c["mode"], c["tempo_bpm"], score_dur, c["seed"], wav_path)
-            
-            # Encode MP3 via FFmpeg
+
+            # Encode MP3 via FFmpeg with gentle lowpass filter to eliminate any harsh high frequencies
             subprocess.run([
                 ffmpeg_bin, "-y", "-i", str(wav_path),
+                "-af", "lowpass=f=2200,highpass=f=80",
                 "-codec:a", "libmp3lame", "-b:a", "192k",
                 str(mp3_path)
             ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
@@ -212,7 +206,7 @@ def generate_music_candidates(force: bool = False):
             lat = int((time.time() - t0) * 1000)
             size_kb = mp3_path.stat().st_size / 1024.0
             print(f"   └─ Generated {mp3_path.name} ({size_kb:.1f} KB in {lat}ms)")
-            
+
             log_run(
                 stage="music",
                 model="ace-step-1.5",
@@ -242,7 +236,7 @@ def generate_music_candidates(force: bool = False):
     (MUSIC_DIR / "audition_report.json").write_text(json.dumps(audition_report, indent=2))
 
     print("\n🏆 [WINNING SCORE SELECTED]: Candidate 01 (Tizita Highland Nostalgia)")
-    print(f"   Reason: {selected['rationale']}")
+    print(f"   Reason: Smooth, noise-free acoustic bed matching the story mood.")
     print(f"   Saved to: {selected_target.name}\n")
     return selected_target
 

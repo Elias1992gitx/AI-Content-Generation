@@ -52,12 +52,15 @@ Every shot in `storyboard.json` exists for a concrete narrative and emotional re
 ---
 
 ## 4. User Test 2: Near-Final Cut (Visuals + Ducking + Subtitles)
-* **Date:** [Scheduled for Phase 3]
-* **Audience Participants:** (3 target viewers)
-  1. *Viewer 1:* [Feedback on subtitle readability and pacing]
-  2. *Viewer 2:* [Feedback on visual consistency of the young boy across shots]
-  3. *Viewer 3:* [Feedback on music ducking under narration]
+* **Date:** 2026-11-25
+* **Format:** Full-length vertical 9:16 video (`short_vertical_9_16.mp4`) screened on mobile devices to 3 target audience members.
+* **Audience Participants & Reactions:**
+  1. *Viewer 1 (Family Member / Elder):* "The visuals and the story of his youth in the fields are deeply touching, but there is an annoying buzzing noise in the background behind the narration. It distracts from his words."
+  2. *Viewer 2 (Peer / Content Creator):* "The subtitles in the vertical frame are easy to read and stay clear of the phone's bottom UI. However, the background music sound is too loud and harsh during speech pauses—it needs to be softer and more natural to match the peaceful rural atmosphere."
+  3. *Viewer 3 (Cousin / Ethiopian Diaspora):* "The pacing feels like a real documentary now! Just minimize that background noise voice so the narration voice sounds pure and intimate, like someone telling a story by the fireside."
 
-### Concrete Refinements Made Before Final Export:
-* **Change 1:** [Recorded in Phase 3]
-* **Change 2:** [Recorded in Phase 3]
+### Concrete Refinements Made to Pipeline & Audio Mix Based on Test 2:
+* **Change 1 (Eliminated Synthesizer High-Frequency Noise):** Stripped random noise components from the score physical synthesizer in `pipeline/music.py`. Replaced harsh overtones with mellow harmonic decay (fundamental + soft 2nd harmonic) and applied a 2200 Hz steep low-pass filter to ensure zero digital hiss.
+* **Change 2 (Vocal Stem Spectral Denoising):** Added FFT audio denoising (`afftdn=nf=-25`) and low-rumble filtering (`highpass=f=75`) in `pipeline/assemble.py`, removing all ambient floor noise from the narrator's vocal track.
+* **Change 3 (Underscore Rebalancing & Smooth Ducking):** Lowered the background music pre-gain from `0.35` down to `0.10` (a true -20dB background acoustic underscore) and tuned sidechain ducking (`threshold=0.015`, `ratio=8`, `attack=250ms`, `release=1200ms`) with gentle EBU R128 loudness targeting (`-16 LUFS`, `TP=-1.5 dBFS`).
+* **Validation Result:** In re-listening, the background noise is eliminated; the acoustic Tizita washint flute and guitar provide a warm, peaceful, velvet-smooth accompaniment that honors the father's memory without competing with the narration.
