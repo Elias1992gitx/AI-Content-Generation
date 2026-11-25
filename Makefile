@@ -16,9 +16,6 @@ validate:
 	python3 pipeline/validate.py
 
 # Individual stage targets
-report:
-	python3 generate_report_pdf.py
-
 narration:
 	python3 pipeline/narration.py
 
