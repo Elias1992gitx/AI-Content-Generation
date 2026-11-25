@@ -1,0 +1,15 @@
+{
+  "id": "eliaschane/heritage-short-wan2-video",
+  "title": "Heritage Short Wan 2.2 Video Diffusion",
+  "code_file": "wan2_ti2v_kaggle.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

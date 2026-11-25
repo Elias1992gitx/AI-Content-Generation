@@ -13,6 +13,22 @@ OUTPUTS_DIR = BASE_DIR / "outputs"
 RUNS_LOG_PATH = BASE_DIR / "runs.jsonl"
 
 
+def get_ffmpeg_cmd() -> str:
+    """Return path to ffmpeg executable, checking system PATH first, then imageio_ffmpeg fallback."""
+    import shutil
+    sys_ffmpeg = shutil.which("ffmpeg")
+    if sys_ffmpeg:
+        return sys_ffmpeg
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        fallback = "/Users/mac/Library/Python/3.9/lib/python/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1"
+        if os.path.exists(fallback):
+            return fallback
+        return "ffmpeg"
+
+
 def compute_cache_key(*args) -> str:
     """Compute deterministic SHA-256 hash from arguments."""
     payload = json.dumps(args, sort_keys=True, ensure_ascii=False)
