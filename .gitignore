@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Environment secrets
+.env
+*.env.local
+
+# Outputs cache & large media
+outputs/keyframes/*
+!outputs/keyframes/.gitkeep
+outputs/shots/*
+!outputs/shots/.gitkeep
+outputs/narration/*
+!outputs/narration/.gitkeep
+outputs/music/*
+!outputs/music/.gitkeep
+outputs/final/*
+!outputs/final/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
