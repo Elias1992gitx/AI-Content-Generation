@@ -1,1 +1,1 @@
-# the-heritage-short
+ai-content-generation
