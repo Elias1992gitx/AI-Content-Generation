@@ -81,3 +81,4 @@ def run_wan2_ti2v():
 
 if __name__ == "__main__":
     run_wan2_ti2v()
+
