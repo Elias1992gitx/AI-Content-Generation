@@ -287,7 +287,7 @@ def assemble_film(force: bool = False):
         ffmpeg_bin, "-y",
         "-f", "concat", "-safe", "0", "-i", str(concat_file),
         "-i", str(master_audio),
-        "-vf", f"ass={ass_16_9}",
+        "-vf", f"setsar=1,ass={ass_16_9}",
         "-map", "0:v",
         "-map", "1:a",
         "-c:v", "libx264", "-preset", "fast", "-crf", "19",
@@ -330,7 +330,7 @@ def assemble_film(force: bool = False):
     print("\n📱 [EXPORT 2/2] Compiling 9:16 Vertical Master (Safe-Area Subtitles)...")
     temp_body_9_16 = FINAL_DIR / "temp_body_9_16.mp4"
     # Center crop to 9:16 (1080x1920) + burn 9:16 ASS subtitles + mux master audio
-    vf_vertical = f"crop=ih*(9/16):ih:(iw-ow)/2:0,scale=1080:1920,ass={ass_9_16}"
+    vf_vertical = f"crop=ih*(9/16):ih:(iw-ow)/2:0,scale=1080:1920,setsar=1,ass={ass_9_16}"
     cmd_body_9_16 = [
         ffmpeg_bin, "-y",
         "-f", "concat", "-safe", "0", "-i", str(concat_file),

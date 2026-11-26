@@ -43,19 +43,20 @@ def get_motion_filter(motion_type: str, duration: float, fps: int = 25) -> str:
     Supported: push_in, pull_out, pan_right, pan_left, slow_drift.
     """
     total_frames = int(duration * fps)
-    
+    prep = "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,setsar=1"
+
     if "pan" in motion_type.lower() and "left to right" in motion_type.lower():
         # Slow pan left to right with slight zoom
-        return f"scale=3840x2160,zoompan=z='1.10':x='(iw-iw/zoom)*(on/({total_frames}-1))':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080"
+        return f"{prep},zoompan=z='1.10':x='(iw-iw/zoom)*(on/({total_frames}-1))':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080,setsar=1"
     elif "pull out" in motion_type.lower() or "wide" in motion_type.lower():
         # Slow pull out / reveal
-        return f"scale=3840x2160,zoompan=z='max(1.14-0.001*on,1.0)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080"
+        return f"{prep},zoompan=z='max(1.14-0.001*on,1.0)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080,setsar=1"
     elif "pan" in motion_type.lower():
         # Slow pan right to left
-        return f"scale=3840x2160,zoompan=z='1.10':x='(iw-iw/zoom)*(1-on/({total_frames}-1))':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080"
+        return f"{prep},zoompan=z='1.10':x='(iw-iw/zoom)*(1-on/({total_frames}-1))':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080,setsar=1"
     else:
         # Default gentle push-in
-        return f"scale=3840x2160,zoompan=z='min(zoom+0.0012,1.15)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080"
+        return f"{prep},zoompan=z='min(zoom+0.0012,1.15)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={total_frames}:fps={fps}:s=1920x1080,setsar=1"
 
 
 def generate_shots(force_regen: bool = False, use_ken_burns: bool = True):
